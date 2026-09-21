@@ -28,6 +28,8 @@ h2{text-align:center;color:var(--d);margin-bottom:34px}
 #contacto{text-align:center}
 footer{background:var(--d);color:#cbd5e1;text-align:center;padding:20px;font-size:.9rem}
 </style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2740977378426451"
+     crossorigin="anonymous"></script>
 </head>
 <body>
 <header><div class="w">
