@@ -16,6 +16,7 @@ class Dashboard extends BaseController
                 'Proyectos'   => $db->table('projects')->countAllResults(),
                 'Artículos'   => $db->table('posts')->countAllResults(),
                 'Suscriptores' => $db->table('users')->where('role', 'subscriber')->countAllResults(),
+                'Comentarios pendientes' => $db->table('comments')->where('status', 'pending')->countAllResults(),
             ],
         ]);
     }

@@ -12,6 +12,7 @@ $routes->get('proyectos', 'Projects::index');
 $routes->get('proyectos/(:segment)', 'Projects::show/$1');
 $routes->get('blog', 'Posts::index');
 $routes->get('blog/(:segment)', 'Posts::show/$1');
+$routes->post('blog/(:segment)/comentarios', 'Comments::store/$1');
 $routes->get('privacidad', 'Pages::privacy');
 
 // Auth
@@ -38,6 +39,10 @@ $routes->group('admin', ['filter' => 'admin', 'namespace' => 'App\Controllers\Ad
     $routes->post('proyectos/(:num)/eliminar', 'Projects::delete/$1');
     $routes->post('proyectos/imagenes/(:num)/eliminar', 'Projects::deleteImage/$1');
     $routes->post('proyectos/imagenes/(:num)/portada', 'Projects::coverImage/$1');
+
+    $routes->get('comentarios', 'Comments::index');
+    $routes->post('comentarios/(:num)/estado', 'Comments::setStatus/$1');
+    $routes->post('comentarios/(:num)/eliminar', 'Comments::delete/$1');
 
     $routes->get('usuarios', 'Users::index');
     $routes->post('usuarios/(:num)/estado', 'Users::toggleStatus/$1');

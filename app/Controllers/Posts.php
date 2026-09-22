@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\CommentModel;
 use App\Models\PostModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
@@ -51,6 +52,7 @@ class Posts extends BaseController
             'title'       => $post['title'] . ' | Sysfranzco',
             'description' => mb_substr(trim(preg_replace('/\s+/', ' ', strip_tags($post['content'] ?? ''))), 0, 155),
             'post'        => $post,
+            'comments'    => (new CommentModel())->approvedForPost((int) $post['id']),
         ]);
     }
 }
