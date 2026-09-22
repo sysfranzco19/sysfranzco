@@ -3,6 +3,8 @@
 namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
+use App\Filters\AdminFilter;
+use App\Filters\SubscriberFilter;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\Honeypot;
@@ -24,6 +26,8 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'admin'         => AdminFilter::class,
+        'subscriber'    => SubscriberFilter::class,
     ];
 
     /**
@@ -35,7 +39,7 @@ class Filters extends BaseConfig
     public array $globals = [
         'before' => [
             // 'honeypot',
-            // 'csrf',
+            'csrf',
             // 'invalidchars',
         ],
         'after' => [

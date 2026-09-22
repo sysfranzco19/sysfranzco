@@ -126,3 +126,6 @@ nb-configuration.xml
 /phpunit*.xml
 /.phpunit.*.cache
 
+
+# Archivos subidos desde el panel admin
+public/uploads/
