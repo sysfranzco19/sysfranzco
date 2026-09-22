@@ -2,12 +2,13 @@
 
 namespace App\Filters;
 
+use App\Models\UserModel;
 use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
 /**
- * Restringe los demos a usuarios autenticados (suscriptores o admin).
+ * Restringe los demos a usuarios activos (suscriptores o admin).
  * Visitantes son enviados al login y regresan a la URL solicitada.
  */
 class SubscriberFilter implements FilterInterface
@@ -22,9 +23,15 @@ class SubscriberFilter implements FilterInterface
             return redirect()->to('login')->with('error', 'Inicia sesión para ver los demos.');
         }
 
-        if (! in_array($session->get('user_role'), ['subscriber', 'admin'], true)) {
-            return redirect()->to('/')->with('error', 'Tu cuenta no tiene acceso a los demos.');
+        $user = (new UserModel())->find($session->get('user_id'));
+
+        if (! $user || $user['status'] !== 'active') {
+            $session->destroy();
+
+            return redirect()->to('login')->with('error', 'Tu cuenta no está activa.');
         }
+
+        $session->set('user_role', $user['role']);
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)

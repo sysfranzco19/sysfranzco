@@ -39,6 +39,11 @@ $routes->group('admin', ['filter' => 'admin', 'namespace' => 'App\Controllers\Ad
     $routes->post('proyectos/imagenes/(:num)/eliminar', 'Projects::deleteImage/$1');
     $routes->post('proyectos/imagenes/(:num)/portada', 'Projects::coverImage/$1');
 
+    $routes->get('usuarios', 'Users::index');
+    $routes->post('usuarios/(:num)/estado', 'Users::toggleStatus/$1');
+    $routes->post('usuarios/(:num)/rol', 'Users::setRole/$1');
+    $routes->post('usuarios/(:num)/eliminar', 'Users::delete/$1');
+
     $routes->get('posts', 'Posts::index');
     $routes->get('posts/nuevo', 'Posts::new');
     $routes->post('posts', 'Posts::create');
