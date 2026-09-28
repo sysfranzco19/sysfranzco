@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= esc($title ?? 'Sysfranzco | Sistemas Informáticos y Asistencia Técnica') ?></title>
 <meta name="description" content="<?= esc($description ?? 'Sysfranzco: desarrollo de sistemas informáticos y asistencia técnica para empresas y hogares.') ?>">
+<link rel="icon" href="<?= base_url('favicon.ico') ?>" sizes="32x32">
+<link rel="icon" href="<?= base_url('favicon.svg') ?>" type="image/svg+xml">
+<link rel="apple-touch-icon" href="<?= base_url('apple-touch-icon.png') ?>">
+<meta name="theme-color" content="#0a2540">
 <style>
 :root{--c:#0b5ed7;--d:#0a2540;--g:#f4f7fb;--t:#333}
 *{box-sizing:border-box;margin:0;padding:0}
