@@ -26,6 +26,11 @@ nav button{background:none;border:0;color:inherit;font:inherit;cursor:pointer}
 .hero p{max-width:600px;margin:0 auto 26px;opacity:.9}
 .btn{display:inline-block;background:#fff;color:var(--c);padding:12px 28px;border-radius:6px;font-weight:600}
 .btn-primary{background:var(--c);color:#fff;border:0;cursor:pointer;font:inherit;font-weight:600}
+.hero .btn+.btn{margin-left:12px}.btn-outline{background:transparent;color:#fff;border:2px solid #fff;padding:10px 26px}
+.card.site{display:block;border-top:4px solid var(--c);transition:transform .15s,box-shadow .15s}
+.card.site:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(11,94,215,.18)}
+.site-icon{font-size:2rem;display:block;margin-bottom:6px}
+.site-go{display:inline-block;margin-top:12px;color:var(--c);font-weight:600;font-size:.9rem}
 section{padding:60px 0}section.alt{background:var(--g)}
 h2{text-align:center;color:var(--d);margin-bottom:34px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
@@ -74,6 +79,7 @@ footer{background:var(--d);color:#cbd5e1;text-align:center;padding:20px;font-siz
   <nav>
     <a href="<?= site_url("proyectos") ?>">Proyectos</a>
     <a href="<?= site_url("blog") ?>">Blog</a>
+    <?php if (config('Sitios')->sitios !== []): ?><a href="<?= site_url('/') ?>#sitios">Sitios</a><?php endif ?>
     <?php if (session()->get('user_id')): ?>
       <?php if (session()->get('user_role') === 'admin'): ?><a href="<?= site_url('admin') ?>">Panel</a><?php endif ?>
       <span><?= esc(session()->get('user_name')) ?></span>

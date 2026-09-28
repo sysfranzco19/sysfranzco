@@ -10,7 +10,24 @@
   <h1>Sistemas informáticos y asistencia técnica</h1>
   <p>Soluciones tecnológicas a medida y soporte confiable para tu empresa u hogar.</p>
   <a class="btn" href="#contacto">Contáctanos</a>
+  <?php if (config('Sitios')->sitios !== []): ?><a class="btn btn-outline" href="#sitios">Nuestros sitios</a><?php endif ?>
 </div></div>
+
+<?php if (config('Sitios')->sitios !== []): ?>
+<section id="sitios" class="alt"><div class="w">
+  <h2>Nuestros sitios</h2>
+  <div class="grid">
+    <?php foreach (config('Sitios')->sitios as $sitio): ?>
+      <a class="card site" href="<?= esc($sitio['url'], 'attr') ?>">
+        <span class="site-icon"><?= esc($sitio['icono']) ?></span>
+        <h3><?= esc($sitio['nombre']) ?></h3>
+        <p><?= esc($sitio['descripcion']) ?></p>
+        <span class="site-go"><?= esc(parse_url($sitio['url'], PHP_URL_HOST)) ?> →</span>
+      </a>
+    <?php endforeach ?>
+  </div>
+</div></section>
+<?php endif ?>
 
 <section id="servicios"><div class="w">
   <h2>Nuestros servicios</h2>
